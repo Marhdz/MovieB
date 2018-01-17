@@ -23,7 +23,8 @@ server.post('/get-movie-details', function (req, res) {
             return res.json({
                  speech: dataToSend,
                  displayText: dataToSend,
-                source: 'get-movie-details'
+                source: 'get-movie-details',
+                test: movieToSearch
             });
 
         });
