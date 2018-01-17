@@ -22,9 +22,9 @@ server.post('/get-movie-details', function (req, res) {
 
             return res.json({
                  speech: dataToSend,
-                 displayText: dataToSend,
-                source: 'get-movie-details',
-                test: movieToSearch
+                // displayText: dataToSend,
+                displayText:movieToSearch
+                source: 'get-movie-details'
             });
 
         });
