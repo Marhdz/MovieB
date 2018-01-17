@@ -12,7 +12,7 @@ server.use(bodyParser.json());
 server.post('/get-movie-details', function (req, res) {
 
     let movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : 'The Godfather';
-    let reqUrl = encodeURI('http://theapache64.com/movie_db/search?keyword=' + movieToSearch);
+    let reqUrl = encodeURI('http://theapache64.com/movie_db/search?keyword=' + movieToSearch );
     http.get(reqUrl, (responseFromAPI) => {
 
         responseFromAPI.on('data', function (chunk) {
@@ -21,8 +21,8 @@ server.post('/get-movie-details', function (req, res) {
             dataToSend += movie.name + ' is a ' + movie.stars + ' starer ' + movie.genre + ' movie, released in ' + movie.year + '. It was directed by ' + movie.director;
 
             return res.json({
-                speech: dataToSend,
-                displayText: dataToSend,
+                 speech: dataToSend,
+                 displayText: dataToSend,
                 source: 'get-movie-details'
             });
 
