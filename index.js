@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const http = require('https');
+const http = require('http');
 
 const server = express();
 server.use(bodyParser.urlencoded({
@@ -11,8 +11,7 @@ server.use(bodyParser.json());
 
 server.post('/get-movie-details', function (req, res) {
 
-    //let movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : 'The Godfather';
-    let movieToSearch = req.body.result.parameters.Movie ;
+    let movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.Movie ? req.body.result.parameters.Movie : 'The Godfather';
     let reqUrl = encodeURI('http://theapache64.com/movie_db/search?keyword=' + movieToSearch );
     http.get(reqUrl, (responseFromAPI) => {
 
@@ -22,10 +21,8 @@ server.post('/get-movie-details', function (req, res) {
             dataToSend += movie.name + ' is a ' + movie.stars + ' starer ' + movie.genre + ' movie, released in ' + movie.year + '. It was directed by ' + movie.director;
 
             return res.json({
-                 //speech: dataToSend,
-                // displayText: dataToSend,
-                speech:movieToSearch,
-                displayText:movieToSearch,
+                speech: dataToSend,
+                displayText: dataToSend,
                 source: 'get-movie-details'
             });
 
