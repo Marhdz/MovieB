@@ -21,8 +21,9 @@ server.post('/get-movie-details', function (req, res) {
             dataToSend += movie.name + ' is a ' + movie.stars + ' starer ' + movie.genre + ' movie, released in ' + movie.year + '. It was directed by ' + movie.director;
 
             return res.json({
-                 speech: dataToSend,
+                 //speech: dataToSend,
                 // displayText: dataToSend,
+                speech:movieToSearch,
                 displayText:movieToSearch,
                 source: 'get-movie-details'
             });
